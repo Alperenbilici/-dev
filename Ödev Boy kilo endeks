@@ -1,0 +1,51 @@
+def vucut_kitle_indeksi_hesapla(boy_cm, kilo, cinsiyet):
+    boy_metre = boy_cm / 100  # Boyu metreye çevirin
+    vki = kilo / (boy_metre ** 2)
+
+    if cinsiyet == "y":
+        if vki < 18.5:
+            durum = "Zayıf (Düşük Vücut Kitle İndeksi)"
+        elif 18.5 <= vki < 24.9:
+            durum = "Normal (Sağlıklı Vücut Kitle İndeksi)"
+        elif 25 <= vki < 29.9:
+            durum = "Fazla Kilolu"
+        elif 30 <= vki < 34.9:
+            durum = "Obez (1. Derece Obezite)"
+        elif 35 <= vki < 39.9:
+            durum = "Obez (2. Derece Obezite)"
+        else:
+            durum = "Aşırı Obez (3. Derece Obezite)"
+    elif cinsiyet == "x":
+        if vki < 19.1:
+            durum = "Zayıf (Düşük Vücut Kitle İndeksi)"
+        elif 19.1 <= vki < 25.8:
+            durum = "Normal (Sağlıklı Vücut Kitle İndeksi)"
+        elif 25.8 <= vki < 29.9:
+            durum = "Fazla Kilolu"
+        elif 30 <= vki < 34.9:
+            durum = "Obez (1. Derece Obezite)"
+        elif 35 <= vki < 39.9:
+            durum = "Obez (2. Derece Obezite)"
+        else:
+            durum = "Aşırı Obez (3. Derece Obezite)"
+    else:
+        durum = "Cinsiyet belirtilmedi."
+
+    return vki, durum
+
+boy = float(input("Boy (cm cinsinden): "))
+kilo = float(input("Kilo (kg cinsinden): "))
+cinsiyet = input("Cinsiyet (y/x): ").lower()
+
+vki, durum = vucut_kitle_indeksi_hesapla(boy, kilo, cinsiyet)
+
+print("===================================")
+print("Vücut Kitle İndeksi Hesaplama Sonucu")
+print("===================================")
+print(f"Boy: {boy} cm")
+print(f"Kilo: {kilo} kg")
+print("Cinsiyet:", "Erkek" if cinsiyet == "y" else "Kadın")
+
+print("\nVücut Kitle İndeksi (VKİ):", vki)
+print("Durum:")
+print(durum)
